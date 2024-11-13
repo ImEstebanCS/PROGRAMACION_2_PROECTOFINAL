@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="co.edu.uniquindio.finalprojectfx.finalprojectapp.controller.VendedorController"
+      stylesheets="@../css/styles.css"
+      styleClass="vendedor-container">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <TabPane>
+        <!-- Pestaña del Muro -->
+        <Tab text="Muro" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header-box">
+                    <Label text="Mi Muro" styleClass="section-title"/>
+                </HBox>
+
+                <ListView fx:id="listViewMuro" VBox.vgrow="ALWAYS" styleClass="muro-list"/>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <TextField fx:id="txtMensaje" promptText="Escribe un mensaje..."
+                               HBox.hgrow="ALWAYS"/>
+                    <Button text="Publicar" onAction="#handlePublicarMensaje"
+                            styleClass="action-button"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Pestaña de Productos -->
+        <Tab text="Mis Productos" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header-box">
+                    <Label text="Mis Productos" styleClass="section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="Nuevo Producto" onAction="#handleNuevoProducto"
+                            styleClass="action-button"/>
+                </HBox>
+
+                <TableView fx:id="tableProductos" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colImagen" text="Imagen" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="imagen"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="colNombre" text="Nombre" prefWidth="150">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="nombre"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="colCategoria" text="Categoría" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="categoria"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="colPrecio" text="Precio" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="precio"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="colEstado" text="Estado" prefWidth="100">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="estado"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="colFecha" text="Fecha" prefWidth="150">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="fechaPublicacion"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                </TableView>
+
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <Button text="Editar" onAction="#handleEditarProducto"
+                            styleClass="secondary-button"/>
+                    <Button text="Eliminar" onAction="#handleEliminarProducto"
+                            styleClass="danger-button"/>
+                    <Button text="Cambiar Estado" onAction="#handleCambiarEstado"
+                            styleClass="secondary-button"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <!-- Pestaña de Red de Contactos -->
+        <Tab text="Red de Contactos" closable="false">
+            <VBox spacing="10">
+                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header-box">
+                    <Label text="Mis Contactos" styleClass="section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Button text="Agregar Contacto" onAction="#handleAgregarContacto"
+                            styleClass="action-button"/>
+                </HBox>
+
+                <SplitPane dividerPositions="0.4" VBox.vgrow="ALWAYS">
+                    <!-- Lista de contactos -->
+                    <VBox spacing="5">
+                        <Label text="Contactos Actuales" styleClass="subsection-title"/>
+                        <ListView fx:id="listViewContactos" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+
+                    <!-- Productos de la red -->
+                    <VBox spacing="5">
+                        <Label text="Productos de mi Red" styleClass="subsection-title"/>
+                        <TableView fx:id="tableProductosRed" VBox.vgrow="ALWAYS">
+                            <columns>
+                                <TableColumn fx:id="colRedVendedor" text="Vendedor" prefWidth="100"/>
+                                <TableColumn fx:id="colRedNombre" text="Producto" prefWidth="150"/>
+                                <TableColumn fx:id="colRedPrecio" text="Precio" prefWidth="100"/>
+                                <TableColumn fx:id="colRedEstado" text="Estado" prefWidth="100"/>
+                            </columns>
+                        </TableView>
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Button text="Me gusta" onAction="#handleMeGusta"
+                                    styleClass="like-button"/>
+                            <Button text="Comentar" onAction="#handleComentar"
+                                    styleClass="comment-button"/>
+                        </HBox>
+                    </VBox>
+                </SplitPane>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
