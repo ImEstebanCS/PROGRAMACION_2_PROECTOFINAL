@@ -1,6 +1,5 @@
 package co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.factory;
 
-
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.Vendedor;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.interfaces.*;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.impl.*;

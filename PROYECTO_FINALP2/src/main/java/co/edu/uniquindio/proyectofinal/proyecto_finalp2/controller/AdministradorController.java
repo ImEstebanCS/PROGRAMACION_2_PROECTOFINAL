@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyectofinal.proyecto_finalp2.controller;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.Vendedor;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.VendedorDialog;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.EstadoProducto;
+import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.factory.ServiceFactory;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.interfaces.IAdministradorCrud;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -11,8 +12,6 @@ import javafx.collections.FXCollections;
 import javafx.stage.FileChooser;
 import java.io.File;
 import javafx.event.ActionEvent;
-
-
 
 public class AdministradorController {
     @FXML private TableView<Vendedor> tableVendedores;
@@ -29,13 +28,15 @@ public class AdministradorController {
 
     private IAdministradorCrud adminService;
 
-    public void inicializar(IAdministradorCrud adminService) {
-        this.adminService = adminService;
+    @FXML
+    public void initialize() {  // Cambiar inicializar() por initialize()
+        adminService = ServiceFactory.getInstance().createAdministradorCrud();
         configurarTabla();
         configurarComboBox();
         cargarDatos();
         actualizarEstadisticas();
     }
+
 
     private void configurarTabla() {
         colCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));

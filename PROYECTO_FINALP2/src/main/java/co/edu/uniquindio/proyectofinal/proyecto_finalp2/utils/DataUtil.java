@@ -4,7 +4,6 @@ import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.*;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.builder.ProductoBuilder;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.builder.VendedorBuilder;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.EstadoProducto;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class DataUtil {
     }
 
     private void inicializarDatos() {
-        // Crear administrador por defecto
+        // creamos administrador por defecto
         administrador = new Administrador(
                 "Administrador",
                 "Sistema",
@@ -38,7 +37,7 @@ public class DataUtil {
                 "admin123"
         );
 
-        // Crear vendedores usando el Builder
+        // creamos vendedores usando el Builder
         Vendedor vendedor1 = new VendedorBuilder()
                 .conNombre("Juan")
                 .conApellidos("Pérez")
@@ -70,7 +69,7 @@ public class DataUtil {
         vendedores.add(vendedor2);
         vendedores.add(vendedor3);
 
-        // Crear productos usando el Builder
+        // Creamos productos usando el Builder
         Producto laptop = new ProductoBuilder()
                 .conNombre("Laptop HP")
                 .conCategoria("Electrónicos")
@@ -152,4 +151,21 @@ public class DataUtil {
         return administrador.getUsuario().equals(usuario) &&
                 administrador.getContrasena().equals(contrasena);
     }
+
+//    public void guardarDatos() {
+//        try {
+//            List<Vendedor> vendedores = marketPlace.getVendedores();
+//            List<Producto> productos = marketPlace.getProductos();
+//            Administrador admin = marketPlace.getAdministrador();
+//
+//
+//            System.out.println("Guardando datos de la aplicación...");
+//            System.out.println("Vendedores guardados: " + vendedores.size());
+//            System.out.println("Productos guardados: " + productos.size());
+//            System.out.println("Datos guardados exitosamente.");
+//
+//        } catch (Exception e) {
+//            System.err.println("Error al guardar los datos: " + e.getMessage());
+//        }
+//    }
 }

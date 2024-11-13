@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <VBox spacing="10" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquindio.finalprojectfx.finalprojectapp.controller.VendedorController"
+      fx:controller="co.edu.uniquindio.proyectofinal.proyecto_finalp2.controller.VendedorController"
       stylesheets="@../css/styles.css"
       styleClass="vendedor-container">
 

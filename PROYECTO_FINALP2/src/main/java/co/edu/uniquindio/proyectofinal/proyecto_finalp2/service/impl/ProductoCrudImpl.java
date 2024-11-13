@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ProductoCrudImpl implements IProductoCrud {
-    private final MarketPlaceApplication marketPlace;
+    private final MarketPlace marketPlace;
 
     public ProductoCrudImpl() {
-        this.marketPlace = MarketPlaceApplication.getInstance();
+        this.marketPlace = MarketPlace.getInstance();
     }
 
     @Override

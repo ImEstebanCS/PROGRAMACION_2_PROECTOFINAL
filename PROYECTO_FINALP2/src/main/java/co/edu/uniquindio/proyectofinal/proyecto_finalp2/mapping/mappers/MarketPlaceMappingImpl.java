@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 
 public class MarketPlaceMappingImpl implements IMarketPlaceMapping {
     private final ModelFactory modelFactory;
-    private final MarketPlaceApplication marketPlace;
+    private final MarketPlace marketPlace;
 
     public MarketPlaceMappingImpl() {
         this.modelFactory = ModelFactory.getInstance();
-        this.marketPlace = MarketPlaceApplication.getInstance();
+        this.marketPlace = MarketPlace.getInstance();
     }
 
     @Override

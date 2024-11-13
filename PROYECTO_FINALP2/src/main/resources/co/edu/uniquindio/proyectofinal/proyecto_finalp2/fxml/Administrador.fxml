@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox spacing="10" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquindio.finalprojectfx.finalprojectapp.controller.AdministradorController"
+      fx:controller="co.edu.uniquindio.proyectofinal.proyecto_finalp2.controller.AdministradorController"
       stylesheets="@../css/styles.css">
 
     <padding>

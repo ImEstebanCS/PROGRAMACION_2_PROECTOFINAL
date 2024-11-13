@@ -10,7 +10,7 @@
 <VBox alignment="CENTER" spacing="20.0"
       xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquindio.finalprojectfx.finalprojectapp.controller.LoginController"
+      fx:controller="co.edu.uniquindio.proyectofinal.proyecto_finalp2.controller.LoginController"
       stylesheets="@../css/styles.css"
       styleClass="login-container">
 

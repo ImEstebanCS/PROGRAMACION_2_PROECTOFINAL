@@ -1,6 +1,5 @@
 package co.edu.uniquindio.proyectofinal.proyecto_finalp2.controller;
 
-
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +16,7 @@ public class LoginController {
     @FXML
     private Label lblError;
 
-    private MarketPlaceApplication marketPlace = MarketPlaceApplication.getInstance();
+    private MarketPlace marketPlace = MarketPlace.getInstance();
 
     @FXML
     private void handleLogin(ActionEvent event) {
@@ -44,10 +43,19 @@ public class LoginController {
 
     private void abrirVentanaPrincipal(Object usuario) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/MarketPlaceApp.fxml"));
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/co/edu/uniquindio/proyectofinal/proyecto_finalp2/fxml/MarketPlaceApp.fxml"));
+
+            if (loader.getLocation() == null) {
+                throw new IllegalStateException("No se pudo encontrar el archivo FXML");
+            }
+
             Scene scene = new Scene(loader.load());
 
             MarketPlaceAppController controller = loader.getController();
+            if (controller == null) {
+                throw new IllegalStateException("No se pudo cargar el controlador");
+            }
             controller.inicializarUsuario(usuario);
 
             Stage stage = (Stage) txtUsuario.getScene().getWindow();
@@ -56,8 +64,8 @@ public class LoginController {
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
-            mostrarError("Error al cargar la aplicación");
+            System.out.println("Error específico: " + e.getMessage());
+            mostrarError("Error al cargar la aplicación: " + e.getMessage());
         }
     }
-
 }

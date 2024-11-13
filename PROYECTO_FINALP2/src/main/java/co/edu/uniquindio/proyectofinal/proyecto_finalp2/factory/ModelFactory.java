@@ -13,9 +13,6 @@ public class ModelFactory {
 
     private ModelFactory() {}
 
-
-
-
     public static ModelFactory getInstance() {
         if (instance == null) {
             instance = new ModelFactory();

@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="co.edu.uniquindio.finalprojectfx.finalprojectapp.controller.MarketPlaceAppController"
-      stylesheets="@../css/styles.css">
+      fx:controller="co.edu.uniquindio.proyectofinal.proyecto_finalp2.controller.MarketPlaceAppController"
+      prefHeight="600.0" prefWidth="800.0">
 
-    <MenuBar>
-        <Menu text="Archivo">
-            <MenuItem text="Cerrar Sesión" onAction="#handleCerrarSesion"/>
-            <MenuItem text="Salir" onAction="#handleSalir"/>
-        </Menu>
-        <Menu text="Reportes">
-            <MenuItem text="Exportar Estadísticas" onAction="#handleExportarEstadisticas"/>
-        </Menu>
-    </MenuBar>
+<MenuBar>
+    <Menu text="Archivo">
+        <MenuItem text="Cerrar Sesión" onAction="#handleCerrarSesion"/>
+        <MenuItem text="Salir" onAction="#handleSalir"/>
+    </Menu>
+    <Menu text="Reportes">
+        <MenuItem text="Exportar Estadísticas" onAction="#handleExportarEstadisticas"/>
+    </Menu>
+</MenuBar>
 
-    <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS"/>
+<TabPane fx:id="tabPane" VBox.vgrow="ALWAYS">
+    <Tab text="Panel de Control" closable="false">
+        <fx:include source="Administrador.fxml"/>
+    </Tab>
+    <!-- Las pestañas de vendedores se agregan dinámicamente -->
+</TabPane>
 </VBox>

@@ -1,10 +1,9 @@
 package co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.impl;
 
-import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.MarketPlaceApplication;
+import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.MarketPlace;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.Vendedor;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.EstadoProducto;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.interfaces.IAdministradorCrud;
-
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -12,11 +11,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class AdministradorCrudImpl implements IAdministradorCrud {
-    private final MarketPlaceApplication marketPlace = MarketPlaceApplication.getInstance();
+    private final MarketPlace marketPlace = MarketPlace.getInstance();
 
     @Override
     public void agregarVendedor(Vendedor vendedor) {
-        marketPlace.getVendedores().add(vendedor);
+        if (vendedor != null) {
+            marketPlace.agregarVendedor(vendedor);
+        }
     }
 
     @Override

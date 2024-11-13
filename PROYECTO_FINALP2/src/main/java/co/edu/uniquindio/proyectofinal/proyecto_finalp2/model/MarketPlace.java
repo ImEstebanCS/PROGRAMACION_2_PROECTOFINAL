@@ -1,37 +1,50 @@
 package co.edu.uniquindio.proyectofinal.proyecto_finalp2.model;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
+import co.edu.uniquindio.proyectofinal.proyecto_finalp2.utils.DataUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MarketPlaceApplication extends Application {
-    private static MarketPlaceApplication instance;
+public class MarketPlace {
+    private static MarketPlace instance;
     private List<Vendedor> vendedores;
     private List<Producto> productos;
     private Administrador administrador;
+    private DataUtil dataUtil;
 
-    private MarketPlaceApplication() {
+    private MarketPlace() {
         this.vendedores = new ArrayList<>();
         this.productos = new ArrayList<>();
+        this.dataUtil = DataUtil.getInstance();
+        cargarDatosIniciales();
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-
+    private void cargarDatosIniciales() {
+        this.administrador = dataUtil.getAdministrador();
+        this.vendedores.addAll(dataUtil.getVendedores());
+        this.productos.addAll(dataUtil.getProductos());
     }
 
-    public static MarketPlaceApplication getInstance() {
+    public static MarketPlace getInstance() {
         if (instance == null) {
-            instance = new MarketPlaceApplication();
+            instance = new MarketPlace();
         }
         return instance;
     }
 
+    public void agregarVendedor(Vendedor vendedor) {
+        if (vendedor != null && !existeVendedor(vendedor.getCedula())) {
+            vendedores.add(vendedor);
+        }
+    }
+
+    private boolean existeVendedor(String cedula) {
+        return vendedores.stream()
+                .anyMatch(v -> v.getCedula().equals(cedula));
+    }
+
     /**
      * Obtiene la lista de todos los productos en el marketplace
-     * @return una nueva lista con los productos para evitar modificación externa
      */
     public List<Producto> getProductos() {
         // Retornamos una nueva lista para evitar modificaciones externas directas
@@ -80,7 +93,6 @@ public class MarketPlaceApplication extends Application {
         return false;
     }
 
-
     public boolean eliminarProducto(Producto producto) {
         if (producto != null) {
             return productos.remove(producto);
@@ -104,12 +116,25 @@ public class MarketPlaceApplication extends Application {
         this.administrador = administrador;
     }
 
-
     public boolean autenticarUsuario(String usuario, String contrasena) {
-        return  true;
+        if (administrador.getUsuario().equals(usuario) &&
+                administrador.getContrasena().equals(contrasena)) {
+            return true;
+        }
+        return vendedores.stream()
+                .anyMatch(v -> v.getUsuario().equals(usuario) &&
+                        v.getContrasena().equals(contrasena));
     }
 
     public Object obtenerUsuario(String usuario, String contrasena) {
-        return  true;
+        if (administrador.getUsuario().equals(usuario) &&
+                administrador.getContrasena().equals(contrasena)) {
+            return administrador;
+        }
+        return vendedores.stream()
+                .filter(v -> v.getUsuario().equals(usuario) &&
+                        v.getContrasena().equals(contrasena))
+                .findFirst()
+                .orElse(null);
     }
 }

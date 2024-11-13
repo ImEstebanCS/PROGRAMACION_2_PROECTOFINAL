@@ -4,7 +4,7 @@ package co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.impl;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.*;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.EstadoProducto;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.service.interfaces.IVendedorCrud;
-import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.MarketPlaceApplication;
+import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.MarketPlace;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.Producto;
 import co.edu.uniquindio.proyectofinal.proyecto_finalp2.model.Vendedor;
 
@@ -14,11 +14,11 @@ import java.util.List;
 
 public class VendedorCrudImpl implements IVendedorCrud {
     private final Vendedor vendedorActual;
-    private final MarketPlaceApplication marketPlace;
+    private final MarketPlace marketPlace;
 
     public VendedorCrudImpl(Vendedor vendedor) {
         this.vendedorActual = vendedor;
-        this.marketPlace = MarketPlaceApplication.getInstance();
+        this.marketPlace = MarketPlace.getInstance();
     }
 
     @Override
